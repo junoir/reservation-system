@@ -1,5 +1,6 @@
 export  class  Room {
     id!: number;
-    beds!: number;
+    name!: string;
+    type!: string;
     status!: number;
 }

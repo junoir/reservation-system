@@ -1,0 +1,24 @@
+<h1>Room Management</h1>
+<div class="card">
+
+  <table  border='1' width='100%' style='border-collapse: collapse;'>
+    <tr>
+      <th>ID</th>
+      <th>Room Name</th>
+      <th>Room Type</th>
+      <th>Room Status</th>
+      <th>Room Actions</th>
+
+    </tr>
+
+    <tr *ngFor="let room of rooms">
+      <td>{{ room.id }}</td>
+      <td>{{ room.name }}</td>
+      <td>{{ room.type }}</td>
+      <td>{{ room.status }}</td>
+      <td>
+        <button (click)="deleteRoom(room.id)">Delete</button>
+        <button (click)="selectRoom(room)">Update</button>
+      </td>
+    </tr>
+  </table>

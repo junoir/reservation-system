@@ -8,7 +8,7 @@ import { Observable } from  'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  ROOMS_API_SERVER = "http://127.0.0.1:8080";
+  ROOMS_API_SERVER = "http://127.0.0.1/backend";
 
   constructor(private httpClient: HttpClient) {}
 
