@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Room } from  './room';
+import { Reservations } from './reservation';
 import { Observable } from  'rxjs';
 
 @Injectable({
@@ -31,4 +32,29 @@ export class ApiService {
   deleteRoom(id: number){
     return this.httpClient.delete<Room>(`${this.ROOMS_API_SERVER}/api/delete.php/?id=${id}`);
   }
+
+  /*
+  * endpoints for reservations
+  */
+
+  // get all rooms
+  getReservations(): Observable<Reservations[]>{
+    return this.httpClient.get<Reservations[]>(`${this.ROOMS_API_SERVER}/api/read.php`);
+  }
+
+
+  // create a reservation
+  createReservation(reservations: Reservations): Observable<Reservations>{
+    return this.httpClient.post<Reservations>(`${this.ROOMS_API_SERVER}/api/create.php`, reservations);
+  }
+
+  // update a reservation
+  updateReservation(reservations: Reservations): Observable<Reservations>{
+    return this.httpClient.post<Reservations>(`${this.ROOMS_API_SERVER}/api/create.php`, reservations);
+  }
+
+  deleteReservation(id: number){
+    return this.httpClient.delete<Reservations>(`${this.ROOMS_API_SERVER}/api/delete.php/?id=${id}`);
+  }
+
 }
