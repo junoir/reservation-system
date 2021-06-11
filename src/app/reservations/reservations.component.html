@@ -1,0 +1,98 @@
+<div style="margin-top: 50px;">
+	<mat-card style="width: 30%;margin: 0 auto; padding: 1.5em;">
+		<h1 style="text-align:center;">Make your reservation</h1>
+		<form #f = "ngForm" class="example-form" style="width: 100%;">
+
+			<table class="example-full-width" cellspacing="0">
+				<tr>
+					<td>
+						<mat-form-field class="example-full-width">
+							<mat-label>First name</mat-label>
+							<input name="fName" matInput [(ngModel)] = "selectedReservation.fName" >
+						</mat-form-field>
+					</td>
+					<td>
+						<mat-form-field class="example-full-width">
+							<mat-label>Last Name</mat-label>
+							<input name="lName" matInput [(ngModel)] = "selectedReservation.lName" >
+						</mat-form-field>
+					</td>
+				</tr>
+			</table>
+
+			<p>
+				<mat-form-field appearance="fill">
+					<mat-label>Enter your email</mat-label>
+					<input 
+						name="email" 
+						matInput 
+						[(ngModel)]="selectedReservation.email" 
+						placeholder="pat@example.com" 
+						required >
+					
+				</mat-form-field>
+			</p>
+
+			<p>
+				<mat-form-field class="example-full-width" appearance="outline">
+					<mat-label>Select Room type</mat-label>
+					<mat-select name="room_type" [(ngModel)] = "selectedReservation.room_reserved">
+					  <mat-option value="sharing">Sharing</mat-option>
+					  <mat-option value="single">Single</mat-option>
+					</mat-select>
+				  </mat-form-field>
+			</p>
+
+			<p>
+				<mat-form-field class="example-full-width" appearance="outline">
+					<mat-label>Number of people</mat-label>
+					<mat-select [(ngModel)] = "selectedReservation.no_peolpe" name="no_peolpe">
+					  <mat-option value="1">One</mat-option>
+					  <mat-option value="2">Two</mat-option>
+					  <mat-option value="3">Three</mat-option>
+					  <mat-option value="4">Four</mat-option>
+					</mat-select>
+				  </mat-form-field>
+			</p>
+
+			<table class="example-full-width" cellspacing="0">
+				<tr>					
+					<td>
+						<mat-form-field appearance="outline" class="example-full-width">
+							<mat-label>Select a date range</mat-label>
+							<mat-date-range-input [rangePicker]="picker">
+							  <input 
+							  	name="date_start" 
+								  matStartDate 
+								  placeholder="Start date" 
+								  [(ngModel)] = "selectedReservation.checkin_date" >
+							  <input 
+							  	name="date_end" 
+								  matEndDate 
+								  placeholder="End date" 
+								  [(ngModel)] = "selectedReservation.checkout_date" >
+							</mat-date-range-input>
+							<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+							<mat-date-range-picker #picker></mat-date-range-picker>
+						  </mat-form-field>
+					</td>
+				</tr>
+			</table>
+
+			<p>
+				<mat-form-field class="example-full-width">
+					<mat-label>Telephone</mat-label>
+					<span matPrefix>+27 &nbsp;</span>
+					<input name="telephone" type="tel" [(ngModel)] = "selectedReservation.telephone" matInput placeholder="031 -401-9988">
+					<mat-icon matSuffix>mode_edit</mat-icon>
+				</mat-form-field>
+			</p>
+
+			<p>
+				<button (click)="createReservations(f)" mat-raised-button color="primary">Reserve Room</button>
+			</p>
+
+		</form>
+
+	</mat-card>
+</div>
